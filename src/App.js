@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+//, Switch, Route
+import {connect} from 'react-redux';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// Actions
+import {pullRequest} from './store/actions';
+
+//Components
+import CountriesList from './components/CountriesList';
+import Navbar from './components/Navbar';
+
+class App extends Component {
+
+  componentDidMount() {
+    this.props.pullRequest()
+  } 
+
+  render() {
+
+    return (
+      <Router >
+          <Navbar />
+          
+          <Route path="/" exact component={CountriesList} />
+      </Router >
+    );
+  }
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => {
+  return{
+    pullRequest: () => dispatch(pullRequest())
+  }
+}
+
+export default connect(null, mapDispatchToProps)(App);
