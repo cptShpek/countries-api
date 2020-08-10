@@ -9,6 +9,7 @@ import {pullRequest} from './store/actions';
 //Components
 import CountriesList from './components/CountriesList';
 import Navbar from './components/Navbar';
+import CountryDetails from './components/CountryDetails';
 
 class App extends Component {
 
@@ -23,6 +24,7 @@ class App extends Component {
           <Navbar />
           
           <Route path="/" exact component={CountriesList} />
+          <Route path="/:name" component={CountryDetails} />
       </Router >
     );
   }

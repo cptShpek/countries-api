@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 
-Number.prototype.toDivide = function() {
-	var int = String(Math.trunc(this));
+let toDivide = function(n) {
+	var int = String(Math.trunc(n));
 	if(int.length <= 3) return int;
 	var space = 0;
 	var number = '';
 
 	for(var i = int.length - 1; i >= 0; i--) {
-		if(space == 3) {
+		if(space === 3) {
 			number = '.' + number;
 			space = 0;
 		}
@@ -26,7 +26,7 @@ class CountryCard extends Component{
 
         this.state = {
             name: this.props.country.name,
-            population: this.props.country.population.toDivide(),
+            population: toDivide(this.props.country.population),
             region: this.props.country.region,
             capital: this.props.country.capital,
             flag: this.props.country.flag,
@@ -39,7 +39,9 @@ class CountryCard extends Component{
         return(
             <div className="col-sm-3 mb-5"  id={name}>
                 <div className="card">
-                    <img className="card-img-top" src={flag}/>
+                    <Link to={'/' + name}>
+                        <img className="card-img-top" alt="flag" src={flag}/>
+                    </Link>
                     <div className="card-body">
                         <h3 className="card-title">{name}</h3>
                         <p className="card-text"><b>Population:</b> {population}</p>
