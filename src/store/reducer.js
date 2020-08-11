@@ -1,6 +1,6 @@
 let initState = {
     countries: [],
-    currentCountry: {}
+    countryDetails: {}
 }
 
 const reducer = (state = initState, action) => {
@@ -12,6 +12,14 @@ const reducer = (state = initState, action) => {
                 countries: action.body
             }
         }
+
+        case 'GET_COUNTRY_DETAILS': {
+            return {
+                ...state,
+                countryDetails: action.body
+            }
+        }
+
         default:
             return state
     }

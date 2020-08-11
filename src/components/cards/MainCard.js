@@ -1,26 +1,10 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-
-let toDivide = function(n) {
-	var int = String(Math.trunc(n));
-	if(int.length <= 3) return int;
-	var space = 0;
-	var number = '';
-
-	for(var i = int.length - 1; i >= 0; i--) {
-		if(space === 3) {
-			number = '.' + number;
-			space = 0;
-		}
-		number = int.charAt(i) + number;
-		space++;
-	}
-
-	return number;
-}
+//Utils
+import {toDivide} from '../../utils/index';
 
 
-class CountryCard extends Component{
+class MainCard extends Component{
     constructor(props) {
         super(props);
 
@@ -54,4 +38,4 @@ class CountryCard extends Component{
     }
 }
 
-export default CountryCard;
+export default MainCard;

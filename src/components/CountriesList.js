@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 // Components
-import CountryCard from './CountryCard';
+import MainCard from './cards/MainCard';
 
 class CountriesList extends Component{
     constructor(props) {
@@ -21,7 +21,7 @@ class CountriesList extends Component{
     mapCountriesToState = () => {
         let arr = []
         // this.props.countries.length
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 100; i++) {
           arr.push(this.props.countries[i])
         }
         this.setState({
@@ -31,7 +31,7 @@ class CountriesList extends Component{
 
     getCounriesCards = () => {
         return this.state.countries.map(country => {
-          return <CountryCard country={country} key={country.name}/>
+          return <MainCard country={country} key={country.name}/>
         })
     }
 
